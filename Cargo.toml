@@ -1,0 +1,13 @@
+[package]
+name = "io_error_serde"
+version = "0.0.1"
+edition = "2021"
+
+authors = [ "Brian Carlsen <carlsen.bri@gmail.com>" ]
+description = "Provides `serde` de/serialization for `std::io::Error`."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/syre-data/io_error_serde"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_with = "3.11"
