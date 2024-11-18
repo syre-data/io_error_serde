@@ -8,7 +8,7 @@ use std::io;
 #[non_exhaustive]
 #[derive(Serialize, Deserialize, PartialEq)]
 #[serde(remote = "io::ErrorKind")]
-pub enum IoErrorKind {
+pub enum ErrorKind {
     NotFound,
     PermissionDenied,
     ConnectionRefused,
@@ -51,20 +51,20 @@ pub enum IoErrorKind {
     Other,
 }
 
-impl serde_with::SerializeAs<io::ErrorKind> for IoErrorKind {
+impl serde_with::SerializeAs<io::ErrorKind> for ErrorKind {
     fn serialize_as<S>(value: &io::ErrorKind, serializer: S) -> Result<S::Ok, S::Error>
     where
         S: serde::Serializer,
     {
-        IoErrorKind::serialize(value, serializer)
+        ErrorKind::serialize(value, serializer)
     }
 }
 
-impl<'de> serde_with::DeserializeAs<'de, io::ErrorKind> for IoErrorKind {
+impl<'de> serde_with::DeserializeAs<'de, io::ErrorKind> for ErrorKind {
     fn deserialize_as<D>(deserializer: D) -> Result<io::ErrorKind, D::Error>
     where
         D: serde::Deserializer<'de>,
     {
-        IoErrorKind::deserialize(deserializer)
+        ErrorKind::deserialize(deserializer)
     }
 }
