@@ -6,7 +6,7 @@ use std::io;
 
 /// Copy of [`io::ErrorKind`] for `serde` de/serialization.
 #[non_exhaustive]
-#[derive(Serialize, Deserialize, PartialEq, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(remote = "io::ErrorKind")]
 pub enum ErrorKind {
     NotFound,
