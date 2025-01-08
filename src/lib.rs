@@ -1,5 +1,6 @@
 //! `serde` De/Serialization for `io::ErrorKind`.
 #![feature(io_error_more)]
+#![feature(io_error_inprogress)]
 
 use serde::{Deserialize, Serialize};
 use std::io;
@@ -35,7 +36,7 @@ pub enum ErrorKind {
     WriteZero,
     StorageFull,
     NotSeekable,
-    FilesystemQuotaExceeded,
+    QuotaExceeded,
     FileTooLarge,
     ResourceBusy,
     ExecutableFileBusy,
@@ -48,6 +49,7 @@ pub enum ErrorKind {
     Unsupported,
     UnexpectedEof,
     OutOfMemory,
+    InProgress,
     Other,
 }
 
